@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  InsertResourceName:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      FunctionName: 'InsertFunctionName'
+      Description: 'Insert description'
+      Handler: 'handler.function_name'
+      Runtime: 'python3.7'
+      CodeUri: .
+      Role: 'arn:aws:iam::123456789:role/insert-lambda-role'
+      Events:
+        TestEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 hour)
+            Name: 'my-schedule'
+            Description: 'Example schedule'
+            Enabled: True
